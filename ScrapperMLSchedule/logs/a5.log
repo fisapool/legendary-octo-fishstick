@@ -1,0 +1,57 @@
+2025-04-12 14:03:31,401 - main - INFO - Starting server on 127.0.0.1:8000
+2025-04-12 14:03:52,343 - main - INFO - Successfully navigated to https://a5.ucsd.edu/tritON/default/STUDENT_SCHEDULE_OF_CLASSES_SEARCH
+2025-04-12 14:04:00,934 - main - INFO - Scraping completed successfully
+2025-04-12 14:05:55,383 - main - INFO - Starting server on 127.0.0.1:8000
+2025-04-12 14:05:58,837 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed
+2025-04-12 14:06:07,279 - main - INFO - Successfully navigated to https://a5.ucsd.edu/tritON/default/STUDENT_SCHEDULE_OF_CLASSES_SEARCH
+2025-04-12 14:06:13,756 - main - INFO - Scraping completed successfully
+2025-04-12 14:06:21,213 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed
+2025-04-12 14:06:42,606 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed
+2025-04-12 14:07:11,689 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed
+2025-04-12 14:07:49,964 - main - INFO - Data processing completed successfully
+2025-04-12 14:08:34,314 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed
+2025-04-12 14:10:17,381 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed
+2025-04-12 14:11:00,409 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed
+2025-04-12 14:12:25,352 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed
+2025-04-12 14:14:34,730 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed
+2025-04-12 14:15:53,837 - main - ERROR - Processing error: 500: Processing failed
+Traceback (most recent call last):
+  File "/Users/aa/Downloads/689f37d8-c5df-4bc6-8c8f-593341b4bcee/ScrapperMLSchedule/src/main.py", line 90, in process
+    raise HTTPException(status_code=500, detail="Processing failed")
+fastapi.exceptions.HTTPException: 500: Processing failed

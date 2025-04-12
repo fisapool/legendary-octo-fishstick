@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Control - Web Scraping & AI Analysis</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-robot text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-semibold">AI Scraper</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Dashboard
+                        </a>
+                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Navigate
+                        </a>
+                        <a href="scrape.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Scrape
+                        </a>
+                        <a href="settings.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Settings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Navigation Control -->
+        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+            <div class="px-4 py-5 sm:p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                    Browser Navigation Control
+                </h2>
+                <p class="text-gray-600 mb-6">
+                    Enter a URL to navigate the browser. The system will automatically handle the navigation and prepare for scraping.
+                </p>
+                
+                <!-- URL Input Form -->
+                <form id="navigation-form" class="space-y-6">
+                    <div>
+                        <label for="url" class="block text-sm font-medium text-gray-700">
+                            Target URL
+                        </label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                            <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                                <i class="fas fa-globe"></i>
+                            </span>
+                            <input type="url" name="url" id="url" required
+                                class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                placeholder="https://example.com">
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <button type="submit"
+                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i class="fas fa-arrow-right mr-2"></i>
+                            Navigate
+                        </button>
+                        <button type="button" onclick="window.location.href='scrape.html'"
+                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i class="fas fa-download mr-2"></i>
+                            Go to Scraping
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Navigation History -->
+        <div class="mt-8">
+            <div class="bg-white shadow rounded-lg">
+                <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        Navigation History
+                    </h3>
+                </div>
+                <div class="px-4 py-5 sm:p-6">
+                    <div class="flow-root">
+                        <ul role="list" class="-mb-8" id="history-list">
+                            <li class="text-gray-500 text-sm italic">No navigation history</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="status-message" class="mt-4 hidden">
+            <div class="rounded-md p-4">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-info-circle text-blue-400"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-700" id="status-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('navigation-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const url = document.getElementById('url').value;
+            const statusMessage = document.getElementById('status-message');
+            const statusText = document.getElementById('status-text');
+            
+            try {
+                statusMessage.className = 'mt-4';
+                statusText.textContent = 'Navigating...';
+                statusMessage.style.display = 'block';
+                
+                const response = await fetch('http://localhost:8000/navigate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url }),
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    statusMessage.className = 'mt-4 bg-green-50 rounded-md p-4';
+                    statusText.textContent = 'Navigation successful!';
+                    
+                    // Add to history
+                    addToHistory(url);
+                } else {
+                    throw new Error(data.detail || 'Navigation failed');
+                }
+            } catch (error) {
+                statusMessage.className = 'mt-4 bg-red-50 rounded-md p-4';
+                statusText.textContent = `Error: ${error.message}`;
+            }
+        });
+
+        function addToHistory(url) {
+            const historyList = document.getElementById('history-list');
+            
+            // Remove "no history" message if present
+            if (historyList.firstChild.tagName !== 'LI') {
+                historyList.innerHTML = '';
+            }
+            
+            const li = document.createElement('li');
+            li.className = 'mt-3';
+            li.innerHTML = `
+                <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-link text-gray-400"></i>
+                    </div>
+                    <div class="flex-1 space-y-1">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-medium text-gray-900">${url}</h3>
+                            <p class="text-sm text-gray-500">${new Date().toLocaleTimeString()}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            historyList.insertBefore(li, historyList.firstChild);
+        }
+    </script>
+</body>
+</html>

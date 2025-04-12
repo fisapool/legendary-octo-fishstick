@@ -1,0 +1,20 @@
+{
+  "remote_debugging": {
+    "port": 9222,
+    "profile": "Default"
+  },
+  "scraper": {
+    "button_selector": "button.scrape-button",
+    "export_format": "json",
+    "auto_export": true,
+    "export_path": "downloads"
+  },
+  "navigation": {
+    "timeout": 30000,
+    "waitUntil": "networkidle0"
+  },
+  "retry": {
+    "max_attempts": 3,
+    "delay_ms": 1000
+  }
+}

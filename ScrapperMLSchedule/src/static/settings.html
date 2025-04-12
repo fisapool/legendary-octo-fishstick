@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Web Scraping & AI Analysis</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-robot text-blue-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-semibold">AI Scraper</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Dashboard
+                        </a>
+                        <a href="navigate.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Navigate
+                        </a>
+                        <a href="scrape.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Scrape
+                        </a>
+                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Settings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- System Settings -->
+        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+            <div class="px-4 py-5 sm:p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                    System Settings
+                </h2>
+                <p class="text-gray-600 mb-6">
+                    Configure system parameters and view system information.
+                </p>
+
+                <!-- Settings Form -->
+                <form id="settings-form" class="space-y-6">
+                    <!-- AI Model Settings -->
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">AI Model Configuration</h3>
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                                <label for="ai-model" class="block text-sm font-medium text-gray-700">
+                                    AI Model
+                                </label>
+                                <select id="ai-model" name="ai-model"
+                                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                    <option value="phi3">phi3</option>
+                                    <option value="tinyllama">tinyllama</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="model-temperature" class="block text-sm font-medium text-gray-700">
+                                    Temperature
+                                </label>
+                                <input type="number" min="0" max="1" step="0.1" id="model-temperature" name="model-temperature"
+                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    value="0.7">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scraping Settings -->
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Scraping Configuration</h3>
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                                <label for="scraper-selector" class="block text-sm font-medium text-gray-700">
+                                    Scraper Button Selector
+                                </label>
+                                <input type="text" id="scraper-selector" name="scraper-selector"
+                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    value="button.scrape-button">
+                            </div>
+                            <div>
+                                <label for="export-format" class="block text-sm font-medium text-gray-700">
+                                    Export Format
+                                </label>
+                                <select id="export-format" name="export-format"
+                                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                    <option value="json">JSON</option>
+                                    <option value="csv">CSV</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- System Settings -->
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">System Configuration</h3>
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                                <label for="debug-port" class="block text-sm font-medium text-gray-700">
+                                    Chrome Debug Port
+                                </label>
+                                <input type="number" id="debug-port" name="debug-port"
+                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    value="9222">
+                            </div>
+                            <div>
+                                <label for="log-level" class="block text-sm font-medium text-gray-700">
+                                    Log Level
+                                </label>
+                                <select id="log-level" name="log-level"
+                                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                    <option value="INFO">INFO</option>
+                                    <option value="DEBUG">DEBUG</option>
+                                    <option value="WARNING">WARNING</option>
+                                    <option value="ERROR">ERROR</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="flex justify-end">
+                        <button type="submit"
+                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i class="fas fa-save mr-2"></i>
+                            Save Settings
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- System Information -->
+        <div class="mt-8">
+            <div class="bg-white shadow rounded-lg">
+                <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        System Information
+                    </h3>
+                </div>
+                <div class="px-4 py-5 sm:p-6">
+                    <dl class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 rounded-lg">
+                            <dt class="text-sm font-medium text-gray-500">Server Status</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" id="server-status">Checking...</dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 rounded-lg">
+                            <dt class="text-sm font-medium text-gray-500">AI Model</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" id="current-model">Loading...</dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 rounded-lg">
+                            <dt class="text-sm font-medium text-gray-500">Chrome Status</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" id="chrome-status">Checking...</dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 rounded-lg">
+                            <dt class="text-sm font-medium text-gray-500">Last Update</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" id="last-update">Never</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Load current settings
+        async function loadSettings() {
+            try {
+                const response = await fetch('http://localhost:8000/status');
+                const data = await response.json();
+                
+                // Update system information
+                document.getElementById('server-status').textContent = data.status;
+                document.getElementById('current-model').textContent = data.ai_model;
+                document.getElementById('chrome-status').textContent = data.browser;
+                document.getElementById('last-update').textContent = new Date().toLocaleString();
+                
+                // TODO: Load and set form values from server configuration
+            } catch (error) {
+                console.error('Error loading settings:', error);
+            }
+        }
+
+        // Save settings
+        document.getElementById('settings-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                ai: {
+                    model: document.getElementById('ai-model').value,
+                    temperature: parseFloat(document.getElementById('model-temperature').value)
+                },
+                scraper: {
+                    selector: document.getElementById('scraper-selector').value,
+                    format: document.getElementById('export-format').value
+                },
+                system: {
+                    debugPort: parseInt(document.getElementById('debug-port').value),
+                    logLevel: document.getElementById('log-level').value
+                }
+            };
+            
+            try {
+                // TODO: Implement settings save endpoint
+                console.log('Settings to save:', formData);
+                alert('Settings saved successfully!');
+            } catch (error) {
+                console.error('Error saving settings:', error);
+                alert('Error saving settings: ' + error.message);
+            }
+        });
+
+        // Load settings on page load
+        loadSettings();
+
+        // Refresh system information periodically
+        setInterval(loadSettings, 30000);
+    </script>
+</body>
+</html>

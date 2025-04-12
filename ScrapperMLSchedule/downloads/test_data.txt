@@ -1,0 +1,4 @@
+Product A - $29.99 - In Stock
+Product B - $49.99 - Out of Stock
+Product C - $19.99 - In Stock
+Product D - $99.99 - In Stock 
